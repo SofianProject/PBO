@@ -1,25 +1,20 @@
 package model;
 
 public class Slot {
-    private ItemStack stack;
+    private Item item;
 
     public Slot() {
-        this.stack = null;
+        this.item = null;
     }
 
-    public ItemStack getStack() {
-        return stack;
-    }
-
-    public void setStack(ItemStack stack) {
-        this.stack = stack;
-    }
+    public Item getItem() { return item; }
+    public void setItem(Item item) { this.item = item; }
 
     public boolean isKosong() {
-        return stack == null || stack.getJumlah() <= 0;
+        return item == null || item.getJumlah() <= 0;
     }
 
     public void kosongkan() {
-        this.stack = null;
+        this.item = null;
     }
 }

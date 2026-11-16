@@ -54,12 +54,10 @@ public class MainFrame extends JFrame {
 
     private void inisialisasiDataAwal() {
 
-        chestInv.getSlot(0, 0).setStack(new ItemStack(new Weapon("W01", "Pedang Besi", 25, "src/assets/pedang.png"), 1));
-        chestInv.getSlot(0, 1).setStack(new ItemStack(new Potion("P01", "HP Potion", 50, "src/assets/potion.png"), 10));
-        chestInv.getSlot(0, 2).setStack(new ItemStack(new Potion("P01", "HP Potion", 50, "src/assets/potion.png"), 10));
-        chestInv.getSlot(1, 0).setStack(new ItemStack(new Material("M01", "Kayu Oak", "Wood", "src/assets/kayu.png"), 64));
-
-        playerInv.getSlot(1, 0).setStack(new ItemStack(new Material("M02", "Batu", "Stone", "src/assets/batu.png"), 40));
-        playerInv.getSlot(0, 0).setStack(new ItemStack(new Material("M02", "Batu", "Stone", "src/assets/batu.png"), 30));
+        chestInv.getSlot(0, 0).setItem(new Weapon("W01", "Pedang Besi", 25, "src/assets/pedang.png"));
+        chestInv.getSlot(0, 1).setItem(new Potion("P01", "HP Potion", 50, "src/assets/potion.png"));
+        chestInv.getSlot(0, 2).setItem(new Potion("P01", "HP Potion", 50, "src/assets/potion.png"));
+        chestInv.getSlot(1, 0).setItem(new Material("M01", "Kayu Oak", "Wood", "src/assets/kayu.png"));
+        playerInv.getSlot(0, 0).setItem(new Material("M02", "Batu", "Stone", "src/assets/batu.png"));
     }
 }

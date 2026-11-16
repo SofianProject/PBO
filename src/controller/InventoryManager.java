@@ -1,57 +1,53 @@
 package controller;
 
-import model.ItemStack;
+import model.Item;
 import model.Slot;
 
 public class InventoryManager {
-    private ItemStack heldStack;
+    private Item heldItem;
 
     public InventoryManager() {
-        this.heldStack = null;
+        this.heldItem = null;
     }
 
-    public ItemStack getHeldStack() {
-        return heldStack;
+    public Item getHeldItem() {
+        return heldItem;
     }
 
     public String clickSlot(Slot clickedSlot) {
-        ItemStack slotStack = clickedSlot.getStack();
+        Item slotItem = clickedSlot.getItem();
 
-        if (heldStack == null && !clickedSlot.isKosong()) {
-            heldStack = slotStack;
+        // Skenario 1: Kursor kosong, petak berisi -> Ambil barang
+        if (heldItem == null && !clickedSlot.isKosong()) {
+            heldItem = slotItem;
             clickedSlot.kosongkan();
-            return "Mengambil " + heldStack.getJumlah() + "x [" + heldStack.getItem().getNama() + "] ke kursor.";
+            return "Mengambil " + heldItem.getJumlah() + "x [" + heldItem.getNama() + "] ke kursor.";
         }
-
-        else if (heldStack != null && clickedSlot.isKosong()) {
-            clickedSlot.setStack(heldStack);
-            String msg = "Menaruh " + heldStack.getJumlah() + "x [" + heldStack.getItem().getNama() + "] ke slot.";
-            heldStack = null;
+        // Skenario 2: Kursor berisi, petak kosong -> Taruh barang
+        else if (heldItem != null && clickedSlot.isKosong()) {
+            clickedSlot.setItem(heldItem);
+            String msg = "Menaruh " + heldItem.getJumlah() + "x [" + heldItem.getNama() + "] ke slot.";
+            heldItem = null;
             return msg;
         }
-
-        else if (heldStack != null && !clickedSlot.isKosong()) {
-
-            if (heldStack.getItem().getId().equals(slotStack.getItem().getId())) {
-
-                int jumlahAwalSlot = slotStack.getJumlah();
-                int sisa = heldStack.tambahJumlah(jumlahAwalSlot);
+        // Skenario 3: Kursor berisi, petak berisi -> Stack atau Swap
+        else if (heldItem != null && !clickedSlot.isKosong()) {
+            if (heldItem.getId().equals(slotItem.getId())) {
+                int jumlahAwalSlot = slotItem.getJumlah();
+                int sisa = heldItem.tambahJumlah(jumlahAwalSlot);
 
                 if (sisa == 0) {
                     clickedSlot.kosongkan();
-                    return "Mengakumulasi tumpukan! Di kursor sekarang ada " + heldStack.getJumlah() + "x [" + heldStack.getItem().getNama() + "].";
+                    return "Mengakumulasi tumpukan! Di kursor sekarang ada " + heldItem.getJumlah() + "x [" + heldItem.getNama() + "].";
                 } else {
-                    int jumlahYangBerhasilDiambil = jumlahAwalSlot - sisa;
-                    slotStack.kurangiJumlah(jumlahYangBerhasilDiambil);
-
-                    return "Kursor penuh (Max " + heldStack.getItem().getMaxStack() + ")! Sisa " + sisa + "x [" + slotStack.getItem().getNama() + "] ditinggalkan di petak.";
+                    slotItem.kurangiJumlah(jumlahAwalSlot - sisa);
+                    return "Kursor penuh (Max " + heldItem.getMaxStack() + ")! Sisa " + sisa + "x [" + slotItem.getNama() + "] ditinggalkan di petak.";
                 }
-            }
-            else {
-                ItemStack temp = slotStack;
-                clickedSlot.setStack(heldStack);
-                heldStack = temp;
-                return "Menukar [" + clickedSlot.getStack().getItem().getNama() + "] dengan [" + heldStack.getItem().getNama() + "].";
+            } else {
+                Item temp = slotItem;
+                clickedSlot.setItem(heldItem);
+                heldItem = temp;
+                return "Menukar [" + clickedSlot.getItem().getNama() + "] dengan [" + heldItem.getNama() + "].";
             }
         }
 

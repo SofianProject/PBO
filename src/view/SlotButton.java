@@ -27,8 +27,8 @@ public class SlotButton extends JButton {
             setIcon(null);
             setBackground(new Color(220, 220, 220));
         } else {
-            Item item = slotModel.getStack().getItem();
-            int jumlah = slotModel.getStack().getJumlah();
+            Item item = slotModel.getItem();
+            int jumlah = item.getJumlah();
 
             if (jumlah > 1) {
                 setText(String.valueOf(jumlah));

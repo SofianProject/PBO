@@ -36,10 +36,10 @@ public class InventoryPanel extends JPanel {
 
                         btn.updateVisual();
 
-                        if (manager.getHeldStack() == null) {
+                        if (manager.getHeldItem() == null) {
                             cursorLabel.setText("Di Kursor: Kosong");
                         } else {
-                            cursorLabel.setText("Di Kursor: " + manager.getHeldStack().getJumlah() + "x [" + manager.getHeldStack().getItem().getNama() + "]");
+                            cursorLabel.setText("Di Kursor: " + manager.getHeldItem().getJumlah() + "x [" + manager.getHeldItem().getJumlah() + "]");
                         }
 
                         logArea.append(hasil + "\n");

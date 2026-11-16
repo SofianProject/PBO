@@ -4,7 +4,7 @@ public class Potion extends Item {
     private int healAmount;
 
     public Potion(String id, String nama, int healAmount, String imagePath) {
-        super(id, nama, 16, imagePath);
+        super(id, nama, 16, 10, imagePath);
         this.healAmount = healAmount;
     }
 
