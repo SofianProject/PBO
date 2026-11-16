@@ -3,14 +3,12 @@ package model;
 public class Potion extends Item {
     private int healAmount;
 
-    public Potion(String id, String nama, int healAmount, String imagePath) {
-        super(id, nama, 16, 10, imagePath);
-        this.healAmount = healAmount;
+    public Potion(int jumlah) {
+        super("P01", "HP Potion", 16, jumlah, "src/assets/potion.png");
+        this.healAmount = 50;
     }
 
-    public int getHealAmount() {
-        return healAmount;
-    }
+    public int getHealAmount() { return healAmount; }
 
     @Override
     public void gunakan() {
