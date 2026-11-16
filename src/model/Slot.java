@@ -4,7 +4,7 @@ public class Slot {
     private ItemStack stack;
 
     public Slot() {
-        this.stack = null; // Slot kosong secara default
+        this.stack = null;
     }
 
     public ItemStack getStack() {

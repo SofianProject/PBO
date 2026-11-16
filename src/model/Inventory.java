@@ -10,7 +10,6 @@ public class Inventory {
         this.kolom = kolom;
         this.slots = new Slot[baris][kolom];
 
-        // Inisialisasi setiap objek Slot di dalam grid matriks
         for (int r = 0; r < baris; r++) {
             for (int c = 0; c < kolom; c++) {
                 slots[r][c] = new Slot();

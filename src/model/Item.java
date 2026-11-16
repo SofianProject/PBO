@@ -4,7 +4,7 @@ public abstract class Item {
     private String id;
     private String nama;
     protected int maxStack;
-    private String imagePath; // Atribut baru untuk gambar
+    private String imagePath;
 
     public Item(String id, String nama, int maxStack, String imagePath) {
         this.id = id;
@@ -16,7 +16,7 @@ public abstract class Item {
     public String getId() { return id; }
     public String getNama() { return nama; }
     public int getMaxStack() { return maxStack; }
-    public String getImagePath() { return imagePath; } // Getter gambar
+    public String getImagePath() { return imagePath; }
 
     public abstract void gunakan();
 }

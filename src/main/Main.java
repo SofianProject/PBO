@@ -5,7 +5,6 @@ import javax.swing.SwingUtilities;
 
 public class Main {
     public static void main(String[] args) {
-        // Menjalankan GUI Swing di thread yang aman
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {

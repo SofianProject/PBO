@@ -4,7 +4,7 @@ public class Material extends Item {
     private String tipe;
 
     public Material(String id, String nama, String tipe, String imagePath) {
-        super(id, nama, 64, imagePath); // Max stack material 64
+        super(id, nama, 64, imagePath);
         this.tipe = tipe;
     }
 
